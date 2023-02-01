@@ -1,0 +1,68 @@
+root = Tk()
+
+programName = "notepad.exe"
+fileName = "READ ME.txt"      #OPENS THE READ ME
+sp.Popen([programName, fileName])
+
+ 
+root.title("Main Menu")
+root.state('zoomed')
+root.configure(bg="light blue")
+    
+label = Label(root, text="GibJhon Tutoring", fg='#1E272E', bg='Orange', width= 32, font='Kalinga 30 bold underline', height = 2)
+label.pack()
+
+signUp = Button(text="Student Sign Up", fg='#1E272E', bg='Orange', width= 30, font='Calibri 15 bold', command=signup_win)
+signUp.place(relx= 0.4, rely= 0.1)
+
+interactiveRes = Button(text="Interactive Resources", fg='#1E272E', bg='Orange', width= 30, font='Calibri 15 bold', command=interactiveRes_win)
+interactiveRes.place(relx= 0.4, rely= 0.2)
+
+learningResourcesbutt = Button(text="Learning Resources", fg='#1E272E', bg='Orange', width= 30, font='Calibri 15 bold', command=learningResources)
+learningResourcesbutt.place(relx= 0.4, rely= 0.3)
+
+studentSupp  = Button(text="Set Support for Student", fg='#1E272E', bg='Orange', width= 30, font='Calibri 15 bold', command=student_supp)
+studentSupp.place(relx= 0.4, rely= 0.4)
+
+monitorLearner = Button(text="Monitor Learners Progress", fg='#1E272E', bg='Orange', width= 30, font='Calibri 15 bold', command=monitor_learner)
+monitorLearner.place(relx= 0.4, rely= 0.5)
+
+gamifiedLearning = Button(text="Online Learning Tools", fg='#1E272E', bg='Orange', width= 30, font='Calibri 15 bold', command=gamified_learning)
+gamifiedLearning.place(relx= 0.4, rely= 0.6)
+
+rewardsShowcase = Button(text=" Learning Rewards ", fg='#1E272E', bg='Orange', width= 30, font='Calibri 15 bold', command=showcase_rewards)
+rewardsShowcase.place(relx= 0.4, rely= 0.7)
+########################################################
+
+gibjhon_logo = Image.open(r"C:\Users\micha\Downloads\Logo.png")
+test = ImageTk.PhotoImage(gibjhon_logo)
+
+company_logo = Label(image=test, width=120)
+company_logo.image = test
+company_logo.place(relx= 0.3, rely= 0)
+
+#exit the app
+exitDashboard  = Button(text="Exit Application", fg='#1E272E', bg='Orange', width= 30, font='Calibri 15 bold', command=quit)
+exitDashboard.place(relx= 0.4, rely= 0.8)
+
+
+#################################################################
+
+light_mode = Image.open(r"C:\Users\micha\Downloads\Light.png")
+light = ImageTk.PhotoImage(light_mode)
+
+dark_mode = Image.open(r"C:\Users\micha\Downloads\Dark.png")
+dark = ImageTk.PhotoImage(dark_mode)
+
+darkMode = Button(text="Dark Mode", fg='#1E272E', bg='grey',font='Calibri 15 bold',image=dark, height=85, compound = LEFT)
+darkMode.bind("<Button-1>", lambda event: toggledarkSwitch(darkMode))
+darkMode.place(relx= 0.8, rely= 0.3)
+
+
+lightMode = Button(text="Light Mode", fg='#1E272E', bg='#F0F0F8',font='Calibri 15 bold',image=light, height=85, compound = LEFT, width=310)
+lightMode.bind("<Button-1>", lambda event: togglelightSwitch(lightMode))
+lightMode.place(relx= 0.8, rely= 0.4)
+
+reset = Button(text="Reset", fg='#1E272E', bg='red',font='Calibri 15 bold')
+reset.bind("<Button-1>", lambda event: resetBackground(reset))
+reset.place(relx= 0.8, rely= 0.5)
