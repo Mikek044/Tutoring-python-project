@@ -1,0 +1,59 @@
+def gamified_learning():
+    game_learning= Toplevel(root)
+    game_learning.state('zoomed')
+    game_learning.configure(bg="light blue")
+    game_learning.title("Online Learning Tools")
+
+    sign_up_inst = Label(game_learning, text="Choose a Online Learning tool for your subject : ", fg='#1E272E', bg='orange', width= 40, font='Calibri 25 bold underline')
+    sign_up_inst.place(relx= 0.4, rely=0.0)
+    sign_up_inst.pack()
+   
+    mathsTest = Button(game_learning, text="Maths", fg='#1E272E', bg='orange', width= 35, font='Calibri 15 bold', command= mathsURL)
+    mathsTest.place(relx= 0.4, rely=0.1)
+
+    historyTest = Button(game_learning, text="History", fg='#1E272E', bg='orange', width= 35, font='Calibri 15 bold', command= historyURL)
+    historyTest.place(relx= 0.4, rely=0.2)
+
+    engineerTest = Button(game_learning, text="Engineering", fg='#1E272E', bg='orange', width= 35, font='Calibri 15 bold', command= engineerURL)
+    engineerTest.place(relx= 0.4, rely=0.3)
+
+    musicTest = Button(game_learning, text="Music", fg='#1E272E', bg='orange', width= 35, font='Calibri 15 bold', command= musicURL)
+    musicTest.place(relx= 0.4, rely=0.4)
+
+    geoTest = Button(game_learning, text="Geography", fg='#1E272E', bg='orange', width= 35, font='Calibri 15 bold', command= geoURL)
+    geoTest.place(relx= 0.4, rely=0.5)
+
+    darkMode = Button(game_learning, text="Dark Mode", fg='#1E272E', bg='grey',font='Calibri 15 bold',image=dark, height=85, compound = LEFT)
+    darkMode.bind("<Button-1>", lambda event: toggledarkSwitchRes(darkMode, game_learning))
+    darkMode.place(relx= 0.8, rely= 0.4)
+
+    lightMode = Button(game_learning, text="Light Mode", fg='#1E272E', bg='#F0F0F8',font='Calibri 15 bold',image=light, height=85, compound = LEFT, width=310)
+    lightMode.bind("<Button-1>", lambda event: togglelightSwitchRes(lightMode, game_learning))
+    lightMode.place(relx= 0.8, rely= 0.5)
+
+    reset = Button(game_learning, text="Reset", fg='#1E272E', bg='red',font='Calibri 15 bold')
+    reset.bind("<Button-1>", lambda event: resetBackgroundRewards(reset, game_learning))
+    reset.place(relx= 0.8, rely= 0.6)
+
+
+def mathsURL():
+    url = "https://quizlet.com/619388278/8th-5-equations-flash-cards/"
+    webbrowser.open(url, new=0, autoraise=True)
+
+
+def historyURL():
+    url = "https://quizlet.com/641830715/the-french-revolution-begins-chapter-7-part-1-flash-cards/"
+    webbrowser.open(url, new=0, autoraise=True)
+
+
+def engineerURL():
+    url = "https://quizlet.com/498955197/electrical-engineering-unit-1-flash-cards/"
+    webbrowser.open(url, new=0, autoraise=True)
+
+def musicURL():
+    url = "https://quizlet.com/645843003/music-symbols-notes-and-rests-flash-cards/"
+    webbrowser.open(url, new=0, autoraise=True)
+
+def geoURL():
+    url = "https://quizlet.com/656376312/asia-geography-flash-cards/"
+    webbrowser.open(url, new=0, autoraise=True)
