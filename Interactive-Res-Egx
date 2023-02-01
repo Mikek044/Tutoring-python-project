@@ -1,0 +1,58 @@
+def inter_geo_con(stu_id):
+
+    inter_geo= Toplevel(root)
+    inter_geo.state('zoomed')
+    inter_geo.configure(bg="light blue")
+    inter_geo.title("Geography Test")
+
+    test_type = Label(inter_geo, text="Geography Test : ", fg='#1E272E', bg='orange', width= 35, font='Calibri 21 bold')
+    test_type.place(relx= 0.4, rely=0.0)
+    test_type.pack()
+
+    quest_1 = Label(inter_geo, text ='Select a continent  ?', width= 40, font='Calibri 15 bold', bg='orange') 
+    quest_1.pack()
+      
+    Checkbutton1 = IntVar()  
+    Checkbutton2 = IntVar()  
+    Checkbutton3 = IntVar()
+     
+    Button1 = Checkbutton(inter_geo, text = " Mexico", 
+                          variable = Checkbutton1,
+                          onvalue = 1,
+                          offvalue = 0,
+                          height = 3,
+                          width = 20,
+                          bg='orange')
+      
+    Button2 = Checkbutton(inter_geo, text = "Russia ",
+                          variable = Checkbutton2,
+                          onvalue = 2,
+                          offvalue = 0,
+                          height = 3,
+                          width = 20,
+                          bg='orange')
+      
+    Button3 = Checkbutton(inter_geo, text = " Antartica",
+                          variable = Checkbutton3,
+                          onvalue = 1,
+                          offvalue = 0,
+                          height = 3,
+                          width = 20,
+                          bg='orange')
+
+
+
+    
+
+    confirm = Button(inter_geo, text="Confirm Answer", fg='#1E272E', bg='orange', width= 30, font='Calibri 15 bold')
+    confirm.bind("<Button-1>", lambda event: valid_geo_answ(Checkbutton1, Checkbutton2, Checkbutton3, stu_id))
+    confirm.place(relx= 4, rely= 1)
+        
+    Button1.pack()  
+    Button2.pack()  
+    Button3.pack()
+    confirm.pack()
+
+    
+      
+    root.mainloop()
