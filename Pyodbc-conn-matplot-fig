@@ -1,0 +1,54 @@
+import pyodbc
+import matplotlib.pyplot as plt
+import matplotlib.patheffects as path_effects
+import pandas as pd
+from tkinter import *
+from tkinter import ttk
+from tkinter import messagebox
+from tkinter import Tk, Text
+import webbrowser
+from PIL import Image, ImageTk
+import subprocess as sp
+
+
+def connectToDB():
+    global conn
+    conn = pyodbc.connect(r'Driver={Microsoft Access Driver (*.mdb, *.accdb)};DBQ=C:\Users\micha\Downloads\GibJhonDB1.accdb')
+    cursor = conn.cursor()
+    
+
+connectToDB()
+
+def runSQL(strSQL, results):
+    global conn
+    cursor = conn.cursor()
+    cursor.execute(strSQL)
+    
+    if results:
+        print("\n")
+        columns = [column[0] for column in cursor.description]
+        for c in columns:
+            print(c, end =", ")
+        print("")
+        for row in cursor.fetchall():
+            for c in row:
+                print(c, end = "\t")
+        print("")
+    else:               # Flips when false runs any other sql command like UPDATE 
+        conn.commit()
+        print("\n", strSQL, ": Run - ", cursor.rowcount, "record(s) affected")
+       
+    cursor.close
+    
+#Front end intro screen     
+fig = plt.figure(figsize=(9, 3))
+text = fig.text(0.5, 0.5, 'Welcome To Tutoring \n'
+                          '\n'
+                          'Close the window to continue ...', color='white',
+                          ha='center', va='center', size=30)
+text.set_path_effects([path_effects.Stroke(linewidth=3, foreground='black'),
+                       path_effects.Normal()])
+
+manager = plt.get_current_fig_manager()
+wm = plt.get_current_fig_manager()
+wm.window.state('zoomed')
