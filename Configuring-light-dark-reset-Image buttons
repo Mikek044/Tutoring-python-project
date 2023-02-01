@@ -1,0 +1,86 @@
+gibjhon_logo = Image.open(r"C:\Users\micha\Downloads\Logo.png")
+test = ImageTk.PhotoImage(gibjhon_logo)
+
+company_logo = Label(image=test, width=120)
+company_logo.image = test
+company_logo.place(relx= 0.3, rely= 0)
+
+#exit the app
+exitDashboard  = Button(text="Exit Application", fg='#1E272E', bg='Orange', width= 30, font='Calibri 15 bold', command=quit)
+exitDashboard.place(relx= 0.4, rely= 0.8)
+
+
+#################################################################
+
+light_mode = Image.open(r"C:\Users\micha\Downloads\Light.png")
+light = ImageTk.PhotoImage(light_mode)
+
+dark_mode = Image.open(r"C:\Users\micha\Downloads\Dark.png")
+dark = ImageTk.PhotoImage(dark_mode)
+
+
+darkMode = Button(text="Dark Mode", fg='#1E272E', bg='grey',font='Calibri 15 bold',image=dark, height=85, compound = LEFT)
+darkMode.bind("<Button-1>", lambda event: toggledarkSwitch(darkMode))
+darkMode.place(relx= 0.8, rely= 0.3)
+
+
+lightMode = Button(text="Light Mode", fg='#1E272E', bg='#F0F0F8',font='Calibri 15 bold',image=light, height=85, compound = LEFT, width=310)
+lightMode.bind("<Button-1>", lambda event: togglelightSwitch(lightMode))
+lightMode.place(relx= 0.8, rely= 0.4)
+
+reset = Button(text="Reset", fg='#1E272E', bg='red',font='Calibri 15 bold')
+reset.bind("<Button-1>", lambda event: resetBackground(reset))
+reset.place(relx= 0.8, rely= 0.5)
+
+
+
+def resetBackground(reset):
+    switch_value= True
+
+        #dark mode
+    if switch_value == True:
+        root.config(bg='light blue')
+        root.config(bg='light blue')
+        switch_value = False
+
+         #light mode
+    else:
+        root.config(bg='#F0F0F8')
+        root.config(bg='#F0F0F8')
+        switch_value = True
+        
+        
+        
+        #toggles dark mode in main menu              
+def toggledarkSwitch(darkMode): 
+    switch_value= True
+
+        #dark mode
+    if switch_value == True:
+        root.config(bg="#26242f")
+        root.config(bg="#26242f")
+        switch_value = False
+
+         #light mode
+    else:
+        root.config(bg='#F0F0F8')
+        root.config(bg='#F0F0F8')
+        switch_value = True
+
+#toggles light mode in main menu        
+def togglelightSwitch(lightMode): 
+    switch_value= True
+
+        #dark mode
+    if switch_value == True:
+        root.config(bg='#F0F0F8')
+        root.config(bg='#F0F0F8')
+        switch_value = False
+
+         #light mode
+    else:
+        root.config(bg='#F0F0F8')
+        root.config(bg='#F0F0F8')
+        switch_value = True
+        
+ 
