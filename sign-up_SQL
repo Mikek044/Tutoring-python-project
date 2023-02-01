@@ -1,0 +1,77 @@
+def signup_win():
+   new= Toplevel(root)
+
+   new.state('zoomed') # .state('zoomed opens new window in fullscreen mode
+   new.title("Student Sign-Up Window")
+   new.configure(bg="light blue")
+   stu_sign = Label(new, text="Student Sign Up", fg='#1E272E', bg='orange', width= 35, font='Calibri 20 bold underline')
+   stu_sign.pack()
+   
+   stu_sign = Label(new, text="Enter your Firstname", fg='#1E272E', bg='orange', width= 35, font='Calibri 20 bold')
+   stu_sign.pack()
+
+   #Firstname textbox
+   f_name = ttk.Entry(new, width= 15)
+   f_name.place(relx= 0.4, rely=0.2)
+   f_name.pack()
+
+
+   stu_sign = Label(new, text="Enter your Surname", fg='#1E272E', bg='orange', width= 35, font='Calibri 20 bold')
+   stu_sign.pack()
+
+   #Surname textbox
+   s_name = ttk.Entry(new, width= 15)
+   s_name.place(relx= 0.4, rely=0.2)
+   s_name.pack()
+
+
+   course_select = Label(new, text="Please Select A Course:", fg='#1E272E', bg='orange', width= 35, font='Calibri 20 bold')
+   course_select.pack()
+
+   #course listbox
+   Lb1 = Listbox(new)
+   Lb1.insert(1, "Maths")
+   Lb1.insert(2, "Geography")
+   Lb1.insert(3, "Engineering")
+   Lb1.insert(4, "Music")
+   Lb1.insert(5, "History")
+
+   Lb1.pack()
+
+   darkMode = Button(new, text="Dark Mode", fg='#1E272E', bg='grey',font='Calibri 15 bold',image=dark, height=85, compound = LEFT)
+   darkMode.bind("<Button-1>", lambda event: toggledarkSwitchInterSignUp(darkMode, new))
+   darkMode.place(relx= 0.8, rely= 0.4)
+
+   lightMode = Button(new, text="Light Mode", fg='#1E272E', bg='#F0F0F8',font='Calibri 15 bold',image=light, height=85, compound = LEFT, width=310)
+   lightMode.bind("<Button-1>", lambda event: togglelightSwitchSignUp(lightMode, new))
+   lightMode.place(relx= 0.8, rely= 0.5)
+
+
+   print("-" + f_name.get())
+   confirm = Button(new, text="Confirm Details", fg='#1E272E', bg='orange', width= 30, font='Calibri 15 bold')
+   confirm.bind("<Button-1>", lambda event: signUpSQL(f_name, s_name, Lb1, new)) #event handler - binds left click to execute signUpSQL() subroutine
+   confirm.pack()
+
+
+   reset = Button(new, text="Reset", fg='#1E272E', bg='red',font='Calibri 15 bold')
+   reset.bind("<Button-1>", lambda event: resetBackgroundRewards(reset, new))
+   reset.place(relx= 0.8, rely= 0.6)
+
+
+def signUpSQL(f_name, s_name, Lb1, new):
+    cursor = conn.cursor()
+
+    Reward = "0"
+
+    print("--" + f_name.get())
+    
+    cursor.execute("INSERT INTO Student (Firstname, Surname, Course, Rewards) VALUES('" + f_name.get() + "', '" + s_name.get() + "', '" + Lb1.get(ACTIVE) + "', '" + Reward + "')") # .get() - used for entry's ||| .get(ACTIVE) - used for Listboxes
+    existing_msg = messagebox.showinfo("Saved","Your details have been saved")
+    new.destroy()
+    
+    print(f_name.get())
+    print(Lb1.get(ACTIVE))
+    
+    
+    conn.commit()
+    #print("\n", strSQL, ": Run - ", cursor.rowcount, "record(s) affected")
