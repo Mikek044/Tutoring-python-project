@@ -1,0 +1,27 @@
+def musicResource():
+    mus_res_win= Toplevel(root)
+    mus_res_win.title("Music Resource")
+    mus_res_win.state('zoomed')
+    mus_res_win.configure(bg="light blue")
+    T= Text(mus_res_win, height= 15, width = 30)
+
+    l = Label(mus_res_win, text= "What are the principle types of musical instruments  ? ", bg='orange')
+    l.config(font =("Courier", 14))
+    l.pack()
+
+    text = Text(mus_res_win, height=15)
+    text.pack()
+
+    text.insert('1.0', ''' types of musical instruments:
+
+                           1. Precussion
+                           2. Keyboard
+                           3. Brass
+                           4. Woodwind
+                           5. Guitar Family
+                           6. Bowed Strings
+
+                        ''')
+    
+    
+    root.mainloop()
