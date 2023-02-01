@@ -1,0 +1,104 @@
+def valid_math_answer(Checkbutton1, Checkbutton2, Checkbutton3, stu_id):
+
+    if Checkbutton1.get() == 3: # correct answer msg to screen + db save msg
+       print("--")
+       correct_ans = messagebox.showinfo("Correct Answer", "Correct Answer, You have been rewarded the Problem Solver Badge")
+       DB_msg = messagebox.showinfo("Saving", "Saving Reward Points")
+       Curr_Rewards = "1" 
+       cursor = conn.cursor()
+       cursor.execute("UPDATE Student SET rewards = '" + Curr_Rewards + "' WHERE Student_ID = " + stu_id.get() ) #SQL Statement that  update the users rewards  
+       conn.commit()
+       root.mainloop()
+ 
+    else:
+        print("-") 
+        Incorrect_ans = messagebox.askretrycancel("Wrong Answer", " Incorrect Answer, Try again?") # wrong answer to screen
+        inter_math_con(stu_id)
+        root.mainloop()
+
+def valid_engin_answer(Checkbutton1, Checkbutton2, Checkbutton3, stu_id):
+
+    if Checkbutton3.get() == 1:
+       print("--")
+       correct_ans = messagebox.showinfo("Correct Answer", "Correct Answer, You have been rewarded the Engineer Badge")
+       DB_msg = messagebox.showinfo("Saving", "Saving Reward Points")
+
+       Curr_Rewards = "5" 
+       cursor = conn.cursor()
+       cursor.execute("UPDATE Student SET rewards = '" + Curr_Rewards + "' WHERE Student_ID = " + stu_id.get() ) #SQL Statement that  update the users rewards  
+       conn.commit()
+       root.mainloop()
+       
+    else:
+        print("-")
+        Incorrect_ans = messagebox.askretrycancel("Wrong Answer", " Incorrect Answer, Try again?")
+        inter_engin_con(stu_id)
+        root.mainloop()
+
+
+
+
+
+
+def valid_hist_answer(Checkbutton1, Checkbutton2, Checkbutton3, stu_id):
+    if Checkbutton3.get() == 1:
+       print("--")
+       correct_ans = messagebox.showinfo("Correct Answer", "Correct Answer, You have been rewarded the Historian Badge")
+       DB_msg = messagebox.showinfo("Saving", "Saving Reward Points")
+
+       Curr_Rewards = "2" 
+       cursor = conn.cursor()
+       cursor.execute("UPDATE Student SET rewards = '" + Curr_Rewards + "' WHERE Student_ID = " + stu_id.get() ) #SQL Statement that  update the users rewards  
+       conn.commit()
+       root.mainloop()
+ 
+    else:
+        print("-") 
+        Incorrect_ans = messagebox.askretrycancel("Wrong Answer", " Incorrect Answer, Try again?") # wrong answer to screen
+        inter_math_con(stu_id)
+        root.mainloop()
+       
+    
+
+
+
+def valid_geo_answ(Checkbutton1, Checkbutton2, Checkbutton3, stu_id):
+    if Checkbutton3.get() == 1:
+       correct_ans = messagebox.showinfo("Correct Answer", "Correct Answer, You have been rewarded the Geo Badge")
+       DB_msg = messagebox.showinfo("Saving", "Saving Reward Points")
+
+       Curr_Rewards = "3" 
+       cursor = conn.cursor()
+       cursor.execute("UPDATE Student SET rewards = '" + Curr_Rewards + "' WHERE Student_ID = " + stu_id.get() ) #SQL Statement that  update the users rewards  
+       conn.commit()
+       root.mainloop()
+       
+    else:
+        print("-")
+        Incorrect_ans = messagebox.askretrycancel("Wrong Answer", " Incorrect Answer, Try again?")
+        inter_geo_con(stu_id)
+        root.mainloop()
+        
+
+
+
+
+
+def valid_music_answ(Checkbutton1, Checkbutton2, Checkbutton3, Checkbutton4, stu_id):
+
+    if Checkbutton3.get() == 1 and Checkbutton1.get() == 1:
+    
+       Correct_ans = messagebox.showinfo("Correct Answer", "Correct Answer, You have been rewarded the Musician Badge")
+       DB_msg = messagebox.showinfo("Saving", "Saving Reward Points")
+
+       Curr_Rewards = "4" 
+       cursor = conn.cursor()
+       cursor.execute("UPDATE Student SET rewards = '" + Curr_Rewards + "' WHERE Student_ID = " + stu_id.get() ) #SQL Statement that  update the users rewards  
+       conn.commit()
+       root.mainloop()
+       
+    else:
+        print("-")
+        Incorrect_ans = messagebox.askretrycancel("Wrong Answer", " Incorrect Answer, Try again?")
+        inter_geo_con()
+        root.mainloop()
