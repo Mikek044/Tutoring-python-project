@@ -1,0 +1,26 @@
+def existing_math_stud_id(stu_id):
+
+    cursor= conn.cursor()
+    cursor.execute("SELECT (Rewards) FROM Student  WHERE Student_ID = " + stu_id.get() ) #SQL Statement that  update the users rewards  
+
+    exist_rec = cursor
+
+    exist_rec = cursor.fetchone() # takes the value in reward row only
+
+    #print(exist_rec) # returns the value in this format e.g('1', )
+
+    conn.commit()
+
+    row_as_list = [x for x in exist_rec] #converts the pyodbc row into an integer list
+
+    #print(row_as_list) #validation place holderSS
+
+
+    #existing record in integer list > (reward points) deny quiz access
+    # if statement checks if the user already has reward points  
+    if row_as_list[0] > (0):
+
+       existing_msg = messagebox.askretrycancel("Existing User","You have already attempted this quiz, Click 'Retry' for all tests ")
+       interactiveRes_win() # re opens all the interactive content
+           
+       root.mainloop()
