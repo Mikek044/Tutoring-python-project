@@ -1,0 +1,12 @@
+def stuMonitorSQL(mon_sup, stu_id):
+
+    cursor = conn.cursor()
+
+    stu_data = runSQL("SELECT DISTINCT Firstname, Surname, Course, Support, Rewards FROM Student WHERE Student_ID = " + stu_id.get() + ";", True)
+    print(stu_id.get()) 
+    conn.commit()
+
+    data_label = Label(mon_sup, text=" ".join(f'Student Data that matches your search is displayed in the console !!!'), fg='#1E272E', bg='#F0F0F8', width= 100, font='Calibri 21 bold underline')
+    data_label.place(relx= 0.2, rely=0.3)
+    
+    #This function allows you to Query from distinct columns with a where condition
